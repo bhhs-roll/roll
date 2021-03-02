@@ -21,7 +21,14 @@ user_id = id.text_input('ID')
 user_pass = passw.text_input('Password')
 login = st.button('Login')
 if login:
-    markdown.empty()
-    id.empty()
-    passw.empty()
-    tools.auth(user_id, user_pass)
+    try:
+        tools.auth(user_id, user_pass)
+    except tools.IncorrectPassword:
+        st.error('Incorrect Password, please try again')
+    except tools.IncorrectUserID:
+        st.error('Incorrect UserID, please try again')
+    finally:
+        markdown.empty()
+        id.empty()
+        passw.empty()
+        markdown.empty()
