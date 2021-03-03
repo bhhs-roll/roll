@@ -21,7 +21,7 @@ button = st.empty()
 loggedin = False
 while not loggedin:
     user_id = id.text_input('User ID')
-    user_pass = passw.text_input('Password')
+    user_pass = passw.text_input('Password', type-'password')
     login = button.button('Login')
     if login:
         with st.spinner('Logging in ...'):
@@ -52,3 +52,10 @@ time.sleep(2)
 success.empty()
 
 markdown.markdown(tools.viewAfterLogin)
+
+mark = st.empty()
+ctrl = st.empty()
+markb = mark.button('Mark Roll')
+ctrlb = ctrl.button('Control Panel')
+if markb:
+    tools.mark_roll
