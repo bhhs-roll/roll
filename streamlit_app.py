@@ -49,5 +49,6 @@ while not loggedin:
 success = st.empty()
 success.success('Logged in successfully')
 time.sleep(2)
-button = st.empty()
+success.empty()
 
+markdown.markdown(tools.viewAfterLogin)
