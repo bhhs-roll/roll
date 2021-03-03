@@ -20,19 +20,19 @@ viewAfterLogin = """
     P.S. To make a teacher account you need a user with at least `user.Admin` permission level to make it for you :/
 """
 
-class IncorrectPassword(Exception):
-    pass
+# class IncorrectPassword(Exception):
+#     pass
 
-class IncorrectUserID(Exception):
-    pass
+# class IncorrectUserID(Exception):
+#     pass
 
 def auth(user_id, user_pass) -> bool:
     'authenticates the user'
     user_ids = db.get_all_users()
     if user_id in user_ids:
         if user_pass == db.get_user_pass(user_id):
-            return True
+            return True, None
         else:
-            raise IncorrectPassword
+            return False, 'pass'
     else:
-        raise IncorrectUserID
+        return False, 'id'
