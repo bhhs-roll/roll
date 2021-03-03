@@ -7,7 +7,7 @@ viewBeforeLogin = """
 """
 
 viewAfterLogin = """
-    ## how to use  
+    ## How to Use  
     ### > Mark Roll
     When you select `mark roll`, the system will boot-up and then take a photo of the class.  
     The ai will then scan the picture and mark who is here and who is not into the internal databases.  
