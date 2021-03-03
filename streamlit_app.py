@@ -21,7 +21,7 @@ button = st.empty()
 loggedin = False
 while not loggedin:
     user_id = id.text_input('User ID')
-    user_pass = passw.text_input('Password', type-'password')
+    user_pass = passw.text_input('Password', type='password')
     login = button.button('Login')
     if login:
         with st.spinner('Logging in ...'):
