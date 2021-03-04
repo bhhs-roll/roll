@@ -1,6 +1,7 @@
 import streamlit as st
 from google.cloud import firestore
 from backend import database as db
+import typing
 
 viewBeforeLogin = """
     ## Please Login to access henos Roll Taking system
@@ -20,11 +21,32 @@ viewAfterLogin = """
     P.S. To make a teacher account you need a user with at least `user.Admin` permission level to make it for you :/
 """
 
-# class IncorrectPassword(Exception):
-#     pass
+viewControlPanel = """
+    # Control Panel
+    This is the control panel, this is where you can manage your classes and edit your user details
+"""
 
-# class IncorrectUserID(Exception):
-#     pass
+class Admin(User):
+    def add_teacher(self, id, name):
+        db.db.collection('users').add(id, {
+            'name': name,
+            'pasword': 'rollTeacher'+id,
+            'permlvl': 'teacher.Normal',
+            'classes': []
+        })
+
+class User:
+    def __init__(self, user_id, user_pass):
+        self._id = user_id
+        self._pass = user_pass
+    
+    @property
+    def id(self):
+        return self._id
+    
+    @property
+    def password(self):
+        return self._pass
 
 def auth(user_id, user_pass) -> bool:
     'authenticates the user'
@@ -36,3 +58,17 @@ def auth(user_id, user_pass) -> bool:
             return False, 'pass'
     else:
         return False, 'id'
+
+def mark_roll(user, markdown):
+    pass
+
+def control_panel(user, markdown):
+    markdown.markdown(viewControlPanel)
+    if isinstance(user, Admin):
+        column = st.beta_columns(3)
+        with column[0]:
+            st.header('Details')
+            new_id = st.text_input('UserID', value=user.id)
+            new_name = st.text_input('Name', value=user.id)
+    else:
+        column = st.beta_columns(2)
