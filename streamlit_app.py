@@ -19,9 +19,11 @@ id = st.empty()
 passw = st.empty()
 button = st.empty()
 loggedin = False
+count = 0
 while not loggedin:
-    user_id = id.text_input('User ID')
-    user_pass = passw.text_input('Password', type='password')
+    count += 1
+    user_id = id.text_input('User ID', key=count)
+    user_pass = passw.text_input('Password', type='password', key=count+1)
     login = button.button('Login')
     if login:
         with st.spinner('Logging in ...'):
@@ -58,4 +60,4 @@ ctrl = st.empty()
 markb = mark.button('Mark Roll')
 ctrlb = ctrl.button('Control Panel')
 if markb:
-    tools.mark_roll
+    tools.mark_roll(user_id)
