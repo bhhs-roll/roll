@@ -61,3 +61,5 @@ markb = mark.button('Mark Roll', key=count+5)
 ctrlb = ctrl.button('Control Panel', key=count+6)
 if markb:
     tools.mark_roll(user_id)
+if ctrlb:
+    tools.control_panel(user_id)
