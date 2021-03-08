@@ -26,7 +26,7 @@ viewControlPanel = """
     This is the control panel, this is where you can manage your classes and edit your user details
 """
 
-class Admin(User):
+class Admin:
     def add_teacher(self, id, name):
         db.db.collection('users').add(id, {
             'name': name,
