@@ -47,6 +47,10 @@ class User:
     @property
     def password(self):
         return self._pass
+    
+    @property
+    def name(self):
+        return self.data['Name']
 
 def auth(user_id, user_pass) -> bool:
     'authenticates the user'
@@ -69,6 +73,6 @@ def control_panel(user, markdown):
         with column[0]:
             st.header('Details')
             new_id = st.text_input('UserID', value=user.id)
-            new_name = st.text_input('Name', value=user.id)
+            new_name = st.text_input('Name', value=user.name)
     else:
         column = st.beta_columns(2)
