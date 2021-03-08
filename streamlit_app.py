@@ -14,6 +14,7 @@ import time
 import face_recognition
 
 st.title('henos Roll Taking system')
+dir(face_recognition)
 markdown = st.empty()
 markdown.markdown(tools.viewBeforeLogin)
 id = st.empty()
