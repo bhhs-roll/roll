@@ -11,6 +11,7 @@ global hosting: `push to github, streamlit will do the rest`
 import streamlit as st
 import tools
 import time
+import face_recognition
 
 st.title('henos Roll Taking system')
 markdown = st.empty()
