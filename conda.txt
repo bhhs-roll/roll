@@ -1,4 +1,1 @@
-streamlit
-google-cloud-firestore
-opencv-python
 face_recognition
